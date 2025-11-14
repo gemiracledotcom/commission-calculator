@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Parupuro Commission Calculator</title>
+    <link href="https://fonts.googleapis.com/css2?family=Meow+Script:wght@400&family=Audiowide:wght@400&family=Lateef:wght@500;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -12,52 +13,94 @@
         }
 
         body {
-            font-family: 'JetBrains Mono', 'Fira Code', 'SF Mono', 'Roboto Mono', 'Courier New', monospace;
-            background: #0a0a0a;
-            color: #e5e5e5;
-            line-height: 1.5;
+            font-family: 'Lateef', serif;
+            background: #161929;
+            color: rgba(128,116,130,0.741);
+            line-height: 1.6;
             padding: 20px;
             padding-bottom: 180px;
-            font-size: 14px;
+            font-size: 16px;
+            position: relative;
+            min-height: 100vh;
+        }
+
+        /* Background pattern matching Carrd */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('data:image/svg+xml;charset=utf8,%3Csvg%20width%3D%221024%22%20height%3D%221024%22%20viewBox%3D%220%200%201024%201024%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%20%3Cstyle%20type%3D%22text%2Fcss%22%3E%20svg%20%7B%20opacity%3A%200.02%3B%20%7D%20path%20%7B%20stroke%3A%20%23000000%3B%20stroke-width%3A%204%3B%20fill%3A%20none%3B%20vector-effect%3A%20non-scaling-stroke%3B%20%7D%20%3C%2Fstyle%3E%3C%2Fsvg%3E'), 
+                          linear-gradient(0deg, #BED9B2 0%, #FFFFFF 60%, #F7E1F4 100%);
+            background-size: cover, cover;
+            background-position: center, 0% 0%;
+            background-repeat: no-repeat, repeat;
+            z-index: 0;
+            pointer-events: none;
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 1000px;
             margin: 0 auto;
-            background: #111111;
-            border-radius: 8px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.5);
+            background: transparent;
+            border-radius: 0.5rem;
+            box-shadow: 0rem 1.75rem 3.125rem 0.25rem rgba(97,35,53,0.388);
+            border: 1px solid #F0EAE6;
             overflow: hidden;
-            border: 1px solid #262626;
+            position: relative;
+            z-index: 1;
         }
 
         .header {
-            background: #111111;
-            color: #f5f5f5;
+            background: linear-gradient(135deg, #BED9B2 0%, #FFFFFF 50%, #F7E1F4 100%);
             padding: 48px 32px;
             text-align: center;
-            border-bottom: 1px solid #262626;
+            border-bottom: 1px solid #E7ACE8;
+            position: relative;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255,255,255,0.3);
+            backdrop-filter: blur(10px);
+            z-index: 0;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
         }
 
         .header h1 {
-            font-size: 2em;
+            font-family: 'Meow Script', cursive;
+            font-size: 3em;
             margin-bottom: 8px;
-            font-weight: 700;
-            letter-spacing: -0.5px;
-            color: #ec4899;
+            font-weight: 400;
+            letter-spacing: -0.075rem;
+            color: rgba(186,151,183,0.988);
+            line-height: 1.125;
         }
 
         .header p {
-            font-size: 0.95em;
-            color: #a3a3a3;
+            font-family: 'Audiowide', sans-serif;
+            font-size: 0.75em;
+            color: rgba(128,116,130,0.741);
             font-weight: 400;
-            letter-spacing: 0.3px;
+            letter-spacing: 0.2rem;
+            text-transform: uppercase;
         }
 
         .calculator-body {
             padding: 48px 32px;
-            max-width: 1100px;
-            margin: 0 auto;
+            background: linear-gradient(135deg, rgba(190,217,178,0.15) 0%, rgba(255,255,255,0.25) 50%, rgba(247,225,244,0.15) 100%);
+            backdrop-filter: blur(20px);
         }
 
         .section {
@@ -65,30 +108,31 @@
         }
 
         .section-title {
-            font-size: 1.3em;
+            font-family: 'Audiowide', sans-serif;
+            font-size: 1.1em;
             margin-bottom: 24px;
-            color: #f5f5f5;
+            color: #733665;
             text-align: center;
-            font-weight: 700;
-            letter-spacing: -0.3px;
+            font-weight: 400;
+            letter-spacing: 0.15rem;
+            text-transform: lowercase;
         }
 
-        /* TAB STYLE CARDS */
+        /* TAB STYLE CARDS with pastel theme */
         .tier-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 16px;
             margin-bottom: 20px;
-            justify-items: center;
         }
 
         .tier-card {
-            background: #161616;
-            border: 2px solid #262626;
-            border-radius: 8px;
+            background: rgba(255,255,255,0.11);
+            border: 1px solid #D4B6D2;
+            border-radius: 0.75rem;
             padding: 24px;
             cursor: pointer;
-            transition: all 0.2s ease;
+            transition: all 0.25s ease;
             position: relative;
             display: flex;
             flex-direction: column;
@@ -97,14 +141,15 @@
         }
 
         .tier-card:hover {
-            border-color: #ec4899;
-            box-shadow: 0 4px 12px rgba(236, 72, 153, 0.15);
+            background: rgba(255,255,255,0.259);
+            border-color: #E7ACE8;
+            transform: rotate(-1deg);
         }
 
         .tier-card.selected {
-            border-color: #ec4899;
-            background: #1a0a12;
-            box-shadow: 0 0 0 3px rgba(236, 72, 153, 0.1);
+            border-color: #E7ACE8;
+            background: linear-gradient(135deg, rgba(190,217,178,0.2) 0%, rgba(255,255,255,0.3) 50%, rgba(247,225,244,0.2) 100%);
+            box-shadow: 0 0 0 2px rgba(231,172,232,0.3);
         }
 
         .tier-card.selected::before {
@@ -112,8 +157,8 @@
             position: absolute;
             top: 12px;
             right: 12px;
-            background: #ec4899;
-            color: #0a0a0a;
+            background: #733665;
+            color: #F0EAE6;
             width: 24px;
             height: 24px;
             border-radius: 50%;
@@ -130,34 +175,36 @@
         }
 
         .tier-name {
-            font-size: 1.05em;
+            font-family: 'Lateef', serif;
+            font-size: 1.1em;
             font-weight: 700;
-            color: #f5f5f5;
+            color: #733665;
             margin-bottom: 8px;
-            letter-spacing: -0.2px;
+            letter-spacing: 0.05rem;
+            text-transform: lowercase;
         }
 
         .tier-price {
             font-size: 1.25em;
             font-weight: 700;
-            color: #d4a5b8;
+            color: rgba(186,151,183,0.988);
             margin-bottom: 4px;
-            transition: color 0.2s ease;
+            transition: color 0.25s ease;
         }
 
         .tier-card.selected .tier-price {
-            color: #ec4899;
+            color: #733665;
         }
 
         .tier-price-usd {
             font-size: 0.9em;
-            color: #737373;
+            color: rgba(128,116,130,0.741);
         }
 
         .tier-description {
             font-size: 0.85em;
-            color: #a3a3a3;
-            line-height: 1.5;
+            color: rgba(128,116,130,0.741);
+            line-height: 1.6;
             margin-top: auto;
             text-align: center;
         }
@@ -169,7 +216,7 @@
 
         .tier-features li {
             font-size: 0.85em;
-            color: #d4d4d4;
+            color: rgba(128,116,130,0.741);
             margin-bottom: 8px;
             padding-left: 20px;
             position: relative;
@@ -179,37 +226,37 @@
             content: "•";
             position: absolute;
             left: 0;
-            color: #ec4899;
+            color: #733665;
             font-weight: bold;
         }
 
-        /* CHECKBOX ADDONS */
+        /* ADDON CARDS */
         .addon-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 16px;
-            justify-items: center;
         }
 
         .addon-card {
-            background: #161616;
-            border: 2px solid #262626;
-            border-radius: 8px;
+            background: rgba(255,255,255,0.11);
+            border: 1px solid #D4B6D2;
+            border-radius: 0.75rem;
             padding: 20px;
             cursor: pointer;
-            transition: all 0.2s ease;
+            transition: all 0.25s ease;
             position: relative;
             width: 100%;
         }
 
         .addon-card:hover {
-            border-color: #ec4899;
-            box-shadow: 0 2px 8px rgba(236, 72, 153, 0.15);
+            background: rgba(255,255,255,0.259);
+            border-color: #E7ACE8;
+            transform: rotate(-1deg);
         }
 
         .addon-card.selected {
-            border-color: #ec4899;
-            background: #1a0a12;
+            border-color: #E7ACE8;
+            background: linear-gradient(135deg, rgba(190,217,178,0.2) 0%, rgba(255,255,255,0.3) 50%, rgba(247,225,244,0.2) 100%);
         }
 
         .addon-card.selected::before {
@@ -217,8 +264,8 @@
             position: absolute;
             top: 12px;
             right: 12px;
-            background: #ec4899;
-            color: #0a0a0a;
+            background: #733665;
+            color: #F0EAE6;
             width: 22px;
             height: 22px;
             border-radius: 50%;
@@ -230,30 +277,32 @@
         }
 
         .addon-name {
+            font-family: 'Lateef', serif;
             font-size: 0.95em;
             font-weight: 700;
             margin-bottom: 6px;
-            color: #f5f5f5;
+            color: #733665;
             text-align: center;
+            text-transform: lowercase;
         }
 
         .addon-price {
             font-size: 1em;
             font-weight: 700;
-            color: #d4a5b8;
+            color: rgba(186,151,183,0.988);
             margin-bottom: 8px;
             text-align: center;
-            transition: color 0.2s ease;
+            transition: color 0.25s ease;
         }
 
         .addon-card.selected .addon-price {
-            color: #ec4899;
+            color: #733665;
         }
 
         .addon-description {
             font-size: 0.825em;
-            color: #a3a3a3;
-            line-height: 1.5;
+            color: rgba(128,116,130,0.741);
+            line-height: 1.6;
             text-align: center;
         }
 
@@ -263,11 +312,12 @@
             bottom: 0;
             left: 0;
             right: 0;
-            background: #111111;
-            color: #f5f5f5;
+            background: linear-gradient(135deg, rgba(190,217,178,0.95) 0%, rgba(255,255,255,0.95) 50%, rgba(247,225,244,0.95) 100%);
+            backdrop-filter: blur(20px);
+            color: #733665;
             padding: 20px;
-            box-shadow: 0 -2px 16px rgba(0,0,0,0.5);
-            border-top: 1px solid #262626;
+            box-shadow: 0 -4px 20px rgba(97,35,53,0.2);
+            border-top: 1px solid #E7ACE8;
             z-index: 1000;
             transform: translateY(100%);
             animation: slideUp 0.4s ease forwards;
@@ -296,96 +346,83 @@
         }
 
         .price-label {
-            font-size: 0.8em;
-            color: #737373;
+            font-family: 'Audiowide', sans-serif;
+            font-size: 0.7em;
+            color: rgba(128,116,130,0.741);
             margin-bottom: 4px;
-            font-weight: 500;
-            letter-spacing: 0.3px;
+            font-weight: 400;
+            letter-spacing: 0.2rem;
+            text-transform: uppercase;
         }
 
         .price-amount {
-            font-size: 1.75em;
-            font-weight: 700;
-            color: #ec4899;
+            font-family: 'Meow Script', cursive;
+            font-size: 2em;
+            font-weight: 400;
+            color: #733665;
+            letter-spacing: -0.05rem;
         }
 
         .price-amount-usd {
-            font-size: 1.05em;
-            color: #a3a3a3;
+            font-size: 1em;
+            color: rgba(128,116,130,0.741);
             margin-top: 2px;
             font-weight: 500;
         }
 
         .breakdown-toggle {
-            background: #1a1a1a;
-            border: 1px solid #262626;
-            color: #e5e5e5;
+            background: rgba(255,255,255,0.11);
+            border: 1px solid #D4B6D2;
+            color: #733665;
             padding: 10px 20px;
-            border-radius: 6px;
+            border-radius: 0.75rem;
             cursor: pointer;
+            font-family: 'Lateef', serif;
             font-size: 0.85em;
-            transition: all 0.2s ease;
+            transition: all 0.25s ease;
             font-weight: 500;
-            font-family: 'JetBrains Mono', monospace;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .breakdown-toggle::before {
-            content: "1.";
-            color: #ec4899;
-            font-weight: 700;
+            text-transform: lowercase;
         }
 
         .breakdown-toggle:hover {
-            background: #262626;
-            border-color: #404040;
+            background: rgba(255,255,255,0.259);
+            border-color: #E7ACE8;
+            transform: rotate(-2deg);
         }
 
         .sticky-cta {
             padding: 12px 32px;
-            background: #ec4899;
-            color: #0a0a0a;
-            border: none;
-            border-radius: 6px;
+            background: #733665;
+            color: #F0EAE6;
+            border: 1px solid #D4B6D2;
+            border-radius: 0.75rem;
+            font-family: 'Lateef', serif;
             font-size: 0.95em;
             font-weight: 700;
             cursor: pointer;
-            transition: all 0.2s ease;
+            transition: all 0.25s ease;
             text-decoration: none;
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            font-family: 'JetBrains Mono', monospace;
-        }
-
-        .sticky-cta::before {
-            content: "2.";
-            color: #0a0a0a;
-            font-weight: 700;
+            text-transform: lowercase;
         }
 
         .sticky-cta:hover {
-            background: #f472b6;
-            box-shadow: 0 4px 12px rgba(236, 72, 153, 0.3);
+            background: rgba(115,54,101,0.9);
+            transform: rotate(-2deg);
+            box-shadow: 0 4px 12px rgba(115,54,101,0.3);
         }
 
         .button-instructions {
             display: flex;
             align-items: center;
             gap: 12px;
-            font-size: 0.75em;
-            color: #737373;
+            font-size: 0.7em;
+            color: rgba(128,116,130,0.741);
             margin-top: 8px;
             justify-content: center;
             flex-wrap: wrap;
-        }
-
-        .button-instructions span {
-            display: flex;
-            align-items: center;
-            gap: 4px;
         }
 
         /* BREAKDOWN MODAL */
@@ -396,7 +433,8 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: rgba(0,0,0,0.8);
+            background: rgba(22,25,41,0.85);
+            backdrop-filter: blur(10px);
             z-index: 2000;
             align-items: center;
             justify-content: center;
@@ -408,15 +446,16 @@
         }
 
         .breakdown-content {
-            background: #111111;
-            border-radius: 8px;
+            background: linear-gradient(135deg, rgba(190,217,178,0.95) 0%, rgba(255,255,255,0.95) 50%, rgba(247,225,244,0.95) 100%);
+            backdrop-filter: blur(20px);
+            border-radius: 0.5rem;
             padding: 32px;
             max-width: 500px;
             width: 100%;
             max-height: 80vh;
             overflow-y: auto;
-            box-shadow: 0 20px 25px -5px rgba(0,0,0,0.5);
-            border: 1px solid #262626;
+            box-shadow: 0rem 1.75rem 3.125rem 0.25rem rgba(97,35,53,0.388);
+            border: 1px solid #E7ACE8;
         }
 
         .breakdown-header {
@@ -425,13 +464,16 @@
             align-items: center;
             margin-bottom: 24px;
             padding-bottom: 16px;
-            border-bottom: 1px solid #262626;
+            border-bottom: 1px solid #E7ACE8;
         }
 
         .breakdown-header h3 {
-            font-size: 1.25em;
-            color: #f5f5f5;
-            font-weight: 700;
+            font-family: 'Audiowide', sans-serif;
+            font-size: 1.1em;
+            color: #733665;
+            font-weight: 400;
+            letter-spacing: 0.15rem;
+            text-transform: lowercase;
         }
 
         .close-breakdown {
@@ -439,24 +481,24 @@
             border: none;
             font-size: 1.75em;
             cursor: pointer;
-            color: #737373;
+            color: rgba(128,116,130,0.741);
             line-height: 1;
             padding: 0;
             width: 32px;
             height: 32px;
-            transition: color 0.2s;
+            transition: color 0.25s;
         }
 
         .close-breakdown:hover {
-            color: #ec4899;
+            color: #733665;
         }
 
         .breakdown-item {
             display: flex;
             justify-content: space-between;
             padding: 12px 0;
-            border-bottom: 1px solid #1a1a1a;
-            color: #d4d4d4;
+            border-bottom: 1px solid rgba(212,182,210,0.3);
+            color: rgba(128,116,130,0.741);
             font-size: 0.9em;
         }
 
@@ -464,35 +506,35 @@
             border-bottom: none;
             margin-top: 16px;
             padding-top: 16px;
-            border-top: 2px solid #ec4899;
+            border-top: 2px solid #733665;
             font-weight: 700;
             font-size: 1.05em;
-            color: #ec4899;
+            color: #733665;
         }
 
         .info-box {
-            background: #1a0f00;
+            background: rgba(251,191,36,0.1);
             border-left: 3px solid #fbbf24;
             padding: 16px;
             margin: 20px 0;
-            border-radius: 4px;
+            border-radius: 0.5rem;
             font-size: 0.85em;
-            color: #fde68a;
+            color: rgba(128,116,130,0.741);
         }
 
         .collapsible {
-            background: #161616;
+            background: rgba(255,255,255,0.11);
             padding: 18px;
-            border-radius: 6px;
+            border-radius: 0.75rem;
             margin-top: 32px;
             cursor: pointer;
-            border: 1px solid #262626;
-            transition: all 0.2s ease;
+            border: 1px solid #D4B6D2;
+            transition: all 0.25s ease;
         }
 
         .collapsible:hover {
-            border-color: #404040;
-            background: #1a1a1a;
+            border-color: #E7ACE8;
+            background: rgba(255,255,255,0.2);
         }
 
         .collapsible-content {
@@ -500,7 +542,7 @@
             overflow: hidden;
             transition: max-height 0.3s ease;
             font-size: 0.85em;
-            color: #a3a3a3;
+            color: rgba(128,116,130,0.741);
         }
 
         .collapsible-content.active {
@@ -515,7 +557,7 @@
 
         @media (max-width: 768px) {
             .header h1 {
-                font-size: 1.6em;
+                font-size: 2em;
             }
             
             .calculator-body {
@@ -532,35 +574,35 @@
             }
 
             .price-amount {
-                font-size: 1.4em;
+                font-size: 1.6em;
             }
 
             body {
-                padding-bottom: 240px;
-                font-size: 13px;
+                padding-bottom: 260px;
+                font-size: 14px;
             }
         }
-
-        @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap');
     </style>
 </head>
 <body>
     <div class="container">
         <div class="header">
-            <h1>PARUPURO</h1>
-            <p>Commission Price Calculator</p>
+            <div class="header-content">
+                <h1>Gem</h1>
+                <p>Commission Calculator</p>
+            </div>
         </div>
 
         <div class="calculator-body">
             
             <!-- Commission Type -->
             <div class="section">
-                <h2 class="section-title">📦 Loại Commission</h2>
+                <h2 class="section-title">📦 loại commission</h2>
                 <div class="tier-grid">
                     <div class="tier-card" onclick="selectTier(this, 'type', 1200000, 50)">
                         <input type="radio" name="type" id="bust">
                         <div class="tier-header">
-                            <div class="tier-name">Bust-up</div>
+                            <div class="tier-name">bust-up</div>
                             <div class="tier-price">1.200.000đ</div>
                             <div class="tier-price-usd">$50</div>
                         </div>
@@ -569,7 +611,7 @@
                     <div class="tier-card" onclick="selectTier(this, 'type', 2500000, 100)">
                         <input type="radio" name="type" id="half">
                         <div class="tier-header">
-                            <div class="tier-name">Half body</div>
+                            <div class="tier-name">half body</div>
                             <div class="tier-price">2.500.000đ</div>
                             <div class="tier-price-usd">$100</div>
                         </div>
@@ -578,7 +620,7 @@
                     <div class="tier-card" onclick="selectTier(this, 'type', 4000000, 150)">
                         <input type="radio" name="type" id="full">
                         <div class="tier-header">
-                            <div class="tier-name">Full body</div>
+                            <div class="tier-name">full body</div>
                             <div class="tier-price">4.000.000đ</div>
                             <div class="tier-price-usd">$150</div>
                         </div>
@@ -587,7 +629,7 @@
                     <div class="tier-card" onclick="selectTier(this, 'type', 5000000, 200)">
                         <input type="radio" name="type" id="illustration">
                         <div class="tier-header">
-                            <div class="tier-name">Full illustration</div>
+                            <div class="tier-name">full illustration</div>
                             <div class="tier-price">5.000.000đ</div>
                             <div class="tier-price-usd">$200</div>
                         </div>
@@ -598,20 +640,20 @@
 
             <!-- Character Design -->
             <div class="section">
-                <h2 class="section-title">✨ Thiết kế nhân vật</h2>
+                <h2 class="section-title">✨ thiết kế nhân vật</h2>
                 <div class="tier-grid">
                     <div class="tier-card selected" onclick="selectTier(this, 'design', 0, 0)">
                         <input type="radio" name="design" id="simple" checked>
                         <div class="tier-header">
-                            <div class="tier-name">Đơn giản</div>
-                            <div class="tier-price">Miễn phí</div>
+                            <div class="tier-name">đơn giản</div>
+                            <div class="tier-price">miễn phí</div>
                         </div>
                         <div class="tier-description">Trang phục thông thường ít chi tiết</div>
                     </div>
                     <div class="tier-card" onclick="selectTier(this, 'design', 1000000, 40)">
                         <input type="radio" name="design" id="complex">
                         <div class="tier-header">
-                            <div class="tier-name">Phức tạp</div>
+                            <div class="tier-name">phức tạp</div>
                             <div class="tier-price">+1.000.000đ</div>
                             <div class="tier-price-usd">$40</div>
                         </div>
@@ -620,7 +662,7 @@
                     <div class="tier-card" onclick="selectTier(this, 'design', 5000000, 200)">
                         <input type="radio" name="design" id="custom">
                         <div class="tier-header">
-                            <div class="tier-name">Custom Design</div>
+                            <div class="tier-name">custom design</div>
                             <div class="tier-price">+5.000.000đ</div>
                             <div class="tier-price-usd">$200</div>
                         </div>
@@ -631,20 +673,20 @@
 
             <!-- Background -->
             <div class="section">
-                <h2 class="section-title">🎨 Background</h2>
+                <h2 class="section-title">🎨 background</h2>
                 <div class="tier-grid">
                     <div class="tier-card selected" onclick="selectTier(this, 'bg', 0, 0)">
                         <input type="radio" name="bg" id="bg1" checked>
                         <div class="tier-header">
-                            <div class="tier-name">Đơn giản</div>
-                            <div class="tier-price">Miễn phí</div>
+                            <div class="tier-name">đơn giản</div>
+                            <div class="tier-price">miễn phí</div>
                         </div>
                         <div class="tier-description">Gradient, blur, bầu trời, silhouette</div>
                     </div>
                     <div class="tier-card" onclick="selectTier(this, 'bg', 1200000, 50)">
                         <input type="radio" name="bg" id="bg2">
                         <div class="tier-header">
-                            <div class="tier-name">Chi tiết vừa</div>
+                            <div class="tier-name">chi tiết vừa</div>
                             <div class="tier-price">+1.200.000đ</div>
                             <div class="tier-price-usd">$50</div>
                         </div>
@@ -653,7 +695,7 @@
                     <div class="tier-card" onclick="selectTier(this, 'bg', 4000000, 150)">
                         <input type="radio" name="bg" id="bg3">
                         <div class="tier-header">
-                            <div class="tier-name">Phức tạp</div>
+                            <div class="tier-name">phức tạp</div>
                             <div class="tier-price">+4.000.000đ</div>
                             <div class="tier-price-usd">$150</div>
                         </div>
@@ -664,19 +706,19 @@
 
             <!-- Pets -->
             <div class="section">
-                <h2 class="section-title">🐾 Pet/Sinh vật đồng hành</h2>
+                <h2 class="section-title">🐾 pet/sinh vật đồng hành</h2>
                 <div class="tier-grid">
                     <div class="tier-card selected" onclick="selectTier(this, 'pet', 0, 0)">
                         <input type="radio" name="pet" id="nopet" checked>
                         <div class="tier-header">
-                            <div class="tier-name">Không có</div>
-                            <div class="tier-price">Miễn phí</div>
+                            <div class="tier-name">không có</div>
+                            <div class="tier-price">miễn phí</div>
                         </div>
                     </div>
                     <div class="tier-card" onclick="selectTier(this, 'pet', 300000, 12)">
                         <input type="radio" name="pet" id="simplepet">
                         <div class="tier-header">
-                            <div class="tier-name">Pet thông thường</div>
+                            <div class="tier-name">pet thông thường</div>
                             <div class="tier-price">+300.000đ</div>
                             <div class="tier-price-usd">$12</div>
                         </div>
@@ -685,7 +727,7 @@
                     <div class="tier-card" onclick="selectTier(this, 'pet', 3000000, 120)">
                         <input type="radio" name="pet" id="complexpet">
                         <div class="tier-header">
-                            <div class="tier-name">Sinh vật phức tạp</div>
+                            <div class="tier-name">sinh vật phức tạp</div>
                             <div class="tier-price">+3.000.000đ</div>
                             <div class="tier-price-usd">$120</div>
                         </div>
@@ -696,7 +738,7 @@
 
             <!-- Additional Characters -->
             <div class="section">
-                <h2 class="section-title">👥 Thêm nhân vật</h2>
+                <h2 class="section-title">👥 thêm nhân vật</h2>
                 <div class="addon-grid">
                     <div class="addon-card" onclick="toggleAddon(this, 'char1', 0.9)">
                         <input type="checkbox" id="char1">
@@ -718,33 +760,33 @@
 
             <!-- File & Deadline -->
             <div class="section">
-                <h2 class="section-title">📂 Add-ons khác</h2>
+                <h2 class="section-title">📂 add-ons khác</h2>
                 <div class="addon-grid">
                     <div class="addon-card" onclick="toggleAddon(this, 'psd', 0, 1500000, 60)">
                         <input type="checkbox" id="psd">
-                        <div class="addon-name">File PSD gốc</div>
+                        <div class="addon-name">file psd gốc</div>
                         <div class="addon-price">+1.500.000đ | $60</div>
                         <div class="addon-description">Full layers để chỉnh sửa sau</div>
                     </div>
                     <div class="addon-card" onclick="toggleAddon(this, 'rush', 0.3)">
                         <input type="checkbox" id="rush">
-                        <div class="addon-name">Deadline gấp</div>
+                        <div class="addon-name">deadline gấp</div>
                         <div class="addon-price">+30%</div>
                         <div class="addon-description">Hoàn thành trong vòng 2 tuần</div>
                     </div>
                 </div>
             </div>
 
-            <!-- Usage Rights - Tab Style -->
+            <!-- Usage Rights -->
             <div class="section">
-                <h2 class="section-title">🎯 Quyền sử dụng</h2>
+                <h2 class="section-title">🎯 quyền sử dụng</h2>
                 <div class="tier-grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">
                     <!-- Personal Use -->
                     <div class="tier-card selected" onclick="selectTier(this, 'usage', 0, 0)">
                         <input type="radio" name="usage" id="personal" checked>
                         <div class="tier-header">
-                            <div class="tier-name">✓ Cá nhân</div>
-                            <div class="tier-price">Miễn phí</div>
+                            <div class="tier-name">✓ cá nhân</div>
+                            <div class="tier-price">miễn phí</div>
                         </div>
                         <div class="tier-description" style="margin-top: 15px; margin-bottom: 10px;">
                             <strong>Dùng cho:</strong> Avatar, wallpaper, header, in trang trí cá nhân, portfolio
@@ -753,7 +795,7 @@
                             <li>Có credit (miễn phí)</li>
                             <li>Chỉ dùng phi thương mại</li>
                         </ul>
-                        <div style="margin-top: 10px; padding: 10px; background: rgba(102,126,234,0.1); border-radius: 8px; font-size: 0.85em;">
+                        <div style="margin-top: 10px; padding: 10px; background: rgba(115,54,101,0.1); border-radius: 8px; font-size: 0.85em;">
                             <strong>Ghost credit (+30%):</strong> Đăng không cần credit công khai
                         </div>
                     </div>
@@ -762,7 +804,7 @@
                     <div class="tier-card" onclick="selectTier(this, 'usage', 0.75, 0)">
                         <input type="radio" name="usage" id="content">
                         <div class="tier-header">
-                            <div class="tier-name">✓ Nội dung kiếm tiền</div>
+                            <div class="tier-name">✓ nội dung kiếm tiền</div>
                             <div class="tier-price">+75%</div>
                         </div>
                         <div class="tier-description" style="margin-top: 15px; margin-bottom: 10px;">
@@ -772,7 +814,7 @@
                             <li>Có credit (+75%)</li>
                             <li>Chỉ cần 1 credit post công khai</li>
                         </ul>
-                        <div style="margin-top: 10px; padding: 10px; background: rgba(102,126,234,0.1); border-radius: 8px; font-size: 0.85em;">
+                        <div style="margin-top: 10px; padding: 10px; background: rgba(115,54,101,0.1); border-radius: 8px; font-size: 0.85em;">
                             <strong>Ghost credit (+125%):</strong> Không cần credit công khai
                         </div>
                     </div>
@@ -780,8 +822,8 @@
                     <!-- Commercial -->
                     <div class="tier-card" onclick="alert('Vui lòng liên hệ riêng để thảo luận về licensing thương mại')">
                         <div class="tier-header">
-                            <div class="tier-name">✓ Bán hàng thương mại</div>
-                            <div class="tier-price" style="font-size: 1.2em;">Liên hệ riêng</div>
+                            <div class="tier-name">✓ bán hàng thương mại</div>
+                            <div class="tier-price" style="font-size: 1.1em;">liên hệ riêng</div>
                             <div class="tier-price-usd">(Giá tính theo flat fee hoặc % royalty)</div>
                         </div>
                         <div class="tier-description" style="margin-top: 15px; margin-bottom: 10px;">
@@ -792,7 +834,7 @@
             </div>
 
             <div class="collapsible" onclick="toggleCollapsible(this)">
-                <strong>ℹ️ Lưu ý về quyền sở hữu & credit</strong>
+                <strong>ℹ️ lưu ý về quyền sở hữu & credit</strong>
                 <div class="collapsible-content">
                     <p style="margin-top: 10px;"><strong>Parupuro giữ toàn bộ copyright tác phẩm.</strong></p>
                     <p style="margin-top: 8px;">"Ghost credit" không có nghĩa bạn sở hữu bản quyền. Khi được hỏi về artist, bạn có thể trả lời đúng hoặc không tiết lộ - nhưng KHÔNG ĐƯỢC claim sai tác giả.</p>
@@ -800,7 +842,7 @@
                 </div>
             </div>
 
-            <p style="text-align: center; margin-top: 40px; color: #6c757d; font-size: 0.9em;">
+            <p style="text-align: center; margin-top: 40px; color: rgba(128,116,130,0.741); font-size: 0.9em;">
                 Giá trên là ước tính. Giá cuối cùng có thể thay đổi tùy độ phức tạp thực tế của dự án.
             </p>
         </div>
@@ -809,23 +851,23 @@
         <div class="sticky-price-bar">
             <div class="price-bar-content">
                 <div class="price-display">
-                    <div class="price-label">Tổng giá trị commission</div>
-                    <div class="price-amount" id="stickyVND">Chọn loại commission</div>
+                    <div class="price-label">tổng giá trị commission</div>
+                    <div class="price-amount" id="stickyVND">chọn loại commission</div>
                     <div class="price-amount-usd" id="stickyUSD"></div>
                 </div>
                 <div style="display: flex; flex-direction: column; gap: 8px; align-items: center;">
                     <div style="display: flex; gap: 12px; flex-wrap: wrap; justify-content: center;">
                         <button class="breakdown-toggle" onclick="toggleBreakdown()">
-                            Chi tiết giá
+                            chi tiết giá
                         </button>
                         <a href="mailto:your-email@example.com" class="sticky-cta">
-                            Đặt Commission
+                            đặt commission
                         </a>
                     </div>
                     <div class="button-instructions">
-                        <span>1. Chụp lại chi tiết giá</span>
-                        <span style="color: #404040;">→</span>
-                        <span>2. Gửi cho contact</span>
+                        <span>1. chụp lại chi tiết giá</span>
+                        <span style="color: rgba(128,116,130,0.5);">→</span>
+                        <span>2. gửi cho contact</span>
                     </div>
                 </div>
             </div>
@@ -835,7 +877,7 @@
         <div class="breakdown-modal" id="breakdownModal" onclick="closeBreakdownOutside(event)">
             <div class="breakdown-content">
                 <div class="breakdown-header">
-                    <h3>Chi tiết giá</h3>
+                    <h3>chi tiết giá</h3>
                     <button class="close-breakdown" onclick="toggleBreakdown()">×</button>
                 </div>
                 <div id="modalBreakdownItems"></div>
@@ -856,22 +898,19 @@
         };
 
         function selectTier(element, category, vnd, usd) {
-            // Remove selected from all tiers in this category
             const siblings = element.parentElement.querySelectorAll('.tier-card');
             siblings.forEach(sib => sib.classList.remove('selected'));
             
-            // Add selected to this tier
             element.classList.add('selected');
             
-            // Update prices
             if (typeof vnd === 'number' && typeof usd === 'number') {
                 if (category === 'usage') {
-                    prices[category] = vnd; // Store as percentage
+                    prices[category] = vnd;
                 } else {
                     prices[category] = { vnd: vnd, usd: usd };
                 }
             } else {
-                prices[category] = vnd; // It's a percentage
+                prices[category] = vnd;
             }
             
             calculateTotal();
@@ -883,9 +922,7 @@
             checkbox.checked = !checkbox.checked;
             
             if (id.startsWith('char')) {
-                // Handle extra characters
                 if (checkbox.checked) {
-                    // Uncheck other character options
                     ['char1', 'char2', 'char3'].forEach(charId => {
                         if (charId !== id) {
                             const otherCheckbox = document.getElementById(charId);
@@ -900,7 +937,6 @@
                     prices.extraChars = 0;
                 }
             } else if (vndAmount) {
-                // Fixed amount addon (like PSD)
                 if (checkbox.checked) {
                     prices.addons.vnd += vndAmount;
                     prices.addons.usd += usdAmount;
@@ -909,7 +945,6 @@
                     prices.addons.usd -= usdAmount;
                 }
             } else {
-                // Percentage addon (like rush)
                 if (checkbox.checked) {
                     prices.percentages += percentageOrVND;
                 } else {
@@ -921,39 +956,32 @@
         }
 
         function calculateTotal() {
-            // Base price (type only)
             let baseVND = prices.type.vnd;
             let baseUSD = prices.type.usd;
             
             if (baseVND === 0) {
-                document.getElementById('stickyVND').textContent = 'Chọn loại commission';
+                document.getElementById('stickyVND').textContent = 'chọn loại commission';
                 document.getElementById('stickyUSD').textContent = '';
                 return;
             }
             
-            // Add fixed costs
             let fixedVND = prices.design.vnd + prices.bg.vnd + prices.pet.vnd + prices.addons.vnd;
             let fixedUSD = prices.design.usd + prices.bg.usd + prices.pet.usd + prices.addons.usd;
             
-            // Calculate base with extra characters
             let baseWithChars = (baseVND * (1 + prices.extraChars));
             let baseWithCharsUSD = (baseUSD * (1 + prices.extraChars));
             
-            // Add all fixed costs
             let subtotal = baseWithChars + fixedVND;
             let subtotalUSD = baseWithCharsUSD + fixedUSD;
             
-            // Apply percentage multipliers (usage rights, rush, etc)
             let totalPercentage = 1 + prices.percentages + prices.usage;
             
             let totalVND = subtotal * totalPercentage;
             let totalUSD = subtotalUSD * totalPercentage;
             
-            // Display in sticky bar
             document.getElementById('stickyVND').textContent = formatVND(totalVND);
             document.getElementById('stickyUSD').textContent = '$' + Math.round(totalUSD);
             
-            // Update breakdown
             updateBreakdown(baseVND, baseUSD, fixedVND, fixedUSD, totalVND, totalUSD);
         }
 
@@ -1017,7 +1045,6 @@
             }
         }
 
-        // Initialize
         calculateTotal();
     </script>
 </body>
