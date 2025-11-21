@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<!-- saved from url=(0053)http://127.0.0.1:5500/gemiricle-calculator-final.html -->
-<html lang="vi"><script async="false" type="module" src="chrome-extension://fiikommddbeccaoicoejoniammnalkfa/assets/inject.ts-DORmTQ1k.js"></script><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gemiricle Commission Calculator</title>
-    <link href="./Gemiricle Commission Calculator_files/css2" rel="stylesheet">    <style>
+    <link href="https://fonts.googleapis.com/css2?family=Meow+Script:wght@400&family=Goldman:wght@400;700&family=EB+Garamond:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap" rel="stylesheet">
+    <style>
         * {
             margin: 0;
             padding: 0;
@@ -54,7 +55,7 @@
 
         .header {
             background: linear-gradient(135deg, #BED9B2 0%, #FFFFFF 50%, #F7E1F4 100%);
-            padding: 40px 40px;
+            padding: 48px 32px;
             text-align: center;
             border-bottom: 1px solid #E7ACE8;
             position: relative;
@@ -79,17 +80,17 @@
 
         .header h1 {
             font-family: 'Meow Script', cursive;
-            font-size: 3.5em !important;
+            font-size: 3em;
             margin-bottom: 8px;
             font-weight: 400;
-            letter-spacing: 0rem;
+            letter-spacing: -0.075rem;
             color: rgba(186,151,183,0.988);
             line-height: 1.125;
         }
 
         .header p {
             font-family: 'Goldman', sans-serif;
-            font-size: 1.1em;
+            font-size: 0.75em;
             color: rgba(128,116,130,0.741);
             font-weight: 400;
             letter-spacing: 0.2rem;
@@ -141,11 +142,11 @@
 
         .section-title {
             font-family: 'Goldman', sans-serif;
-            font-size: 1.5em;
+            font-size: 1.1em;
             margin-bottom: 24px;
             color: #733665;
             text-align: center;
-            font-weight: 700;
+            font-weight: 400;
             letter-spacing: 0.15rem;
             text-transform: lowercase;
         }
@@ -207,7 +208,7 @@
         }
 
         .tier-name {
-            font-family: 'Lateef', serif;
+            font-family: 'EB Garamond', serif;
             font-size: 1.25em;
             font-weight: 700;
             color: #733665;
@@ -310,7 +311,7 @@
         }
 
         .addon-name {
-            font-family: 'Lateef', serif;
+            font-family: 'EB Garamond', serif;
             font-size: 1.05em;
             font-weight: 700;
             margin-bottom: 6px;
@@ -379,7 +380,7 @@
         }
 
         .price-label {
-            font-family: 'Audiowide', sans-serif;
+            font-family: 'Goldman', sans-serif;
             font-size: 0.7em;
             color: rgba(128,116,130,0.741);
             margin-bottom: 4px;
@@ -410,7 +411,7 @@
             padding: 10px 20px;
             border-radius: 0.75rem;
             cursor: pointer;
-            font-family: 'Lateef', serif;
+            font-family: 'EB Garamond', serif;
             font-size: 0.85em;
             transition: all 0.25s ease;
             font-weight: 500;
@@ -429,7 +430,7 @@
             color: #F0EAE6;
             border: 1px solid #D4B6D2;
             border-radius: 0.75rem;
-            font-family: 'Lateef', serif;
+            font-family: 'EB Garamond', serif;
             font-size: 0.95em;
             font-weight: 700;
             cursor: pointer;
@@ -501,7 +502,7 @@
         }
 
         .breakdown-header h3 {
-            font-family: 'Audiowide', sans-serif;
+            font-family: 'Goldman', sans-serif;
             font-size: 1.1em;
             color: #733665;
             font-weight: 400;
@@ -588,6 +589,106 @@
             display: none;
         }
 
+        /* CONTACT DROPDOWN MENU */
+        .contact-dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .contact-dropdown-btn {
+            padding: 12px 32px;
+            background: #733665;
+            color: #F0EAE6;
+            border: 1px solid #D4B6D2;
+            border-radius: 0.75rem;
+            font-family: 'EB Garamond', serif;
+            font-size: 0.95em;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            text-transform: lowercase;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .contact-dropdown-btn:hover {
+            background: rgba(115,54,101,0.9);
+            transform: rotate(-2deg);
+            box-shadow: 0 4px 12px rgba(115,54,101,0.3);
+        }
+
+        .contact-dropdown-btn::after {
+            content: "▲";
+            font-size: 0.7em;
+            transition: transform 0.25s ease;
+        }
+
+        .contact-dropdown.active .contact-dropdown-btn::after {
+            transform: rotate(180deg);
+        }
+
+        .contact-dropdown-menu {
+            position: absolute;
+            bottom: calc(100% + 8px);
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, rgba(190,217,178,0.98) 0%, rgba(255,255,255,0.98) 50%, rgba(247,225,244,0.98) 100%);
+            backdrop-filter: blur(20px);
+            border: 1px solid #E7ACE8;
+            border-radius: 0.75rem;
+            padding: 8px;
+            min-width: 220px;
+            box-shadow: 0rem 1rem 2rem rgba(97,35,53,0.3);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateX(-50%) translateY(10px);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .contact-dropdown.active .contact-dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        .contact-dropdown-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 16px;
+            color: #733665;
+            text-decoration: none;
+            border-radius: 0.5rem;
+            transition: all 0.2s ease;
+            font-family: 'EB Garamond', serif;
+            font-size: 0.9em;
+            font-weight: 500;
+        }
+
+        .contact-dropdown-item:hover {
+            background: rgba(115,54,101,0.1);
+            transform: translateX(4px);
+        }
+
+        .contact-dropdown-item svg {
+            width: 20px;
+            height: 20px;
+            fill: #733665;
+            flex-shrink: 0;
+        }
+
+        .contact-dropdown-item .label {
+            flex: 1;
+        }
+
+        @media (max-width: 768px) {
+            .contact-dropdown-menu {
+                min-width: 200px;
+            }
+        }
+
         @media (max-width: 768px) {
             .header h1 {
                 font-size: 2em;
@@ -624,8 +725,8 @@
                 <h1>Gemiricle</h1>
                 <p>Commission Calculator</p>
                 <div class="language-toggle">
-                    <button class="lang-btn" onclick="switchLanguage(&#39;vi&#39;)">VIE</button>
-                    <button class="lang-btn active" onclick="switchLanguage(&#39;en&#39;)">ENG</button>
+                    <button class="lang-btn active" onclick="switchLanguage('vi')">VIE</button>
+                    <button class="lang-btn" onclick="switchLanguage('en')">ENG</button>
                 </div>
             </div>
         </div>
@@ -634,76 +735,76 @@
             
             <!-- Commission Type -->
             <div class="section">
-                <h2 class="section-title" data-vi="📦 loại commission" data-en="📦 commission type">📦 commission type</h2>
+                <h2 class="section-title" data-vi="📦 loại commission" data-en="📦 commission type">📦 loại commission</h2>
                 <div class="tier-grid">
-                    <div class="tier-card" onclick="selectTier(this, &#39;type&#39;, 1200000, 50)">
+                    <div class="tier-card" onclick="selectTier(this, 'type', 1200000, 50)">
                         <input type="radio" name="type" id="bust">
                         <div class="tier-header">
                             <div class="tier-name">bust-up</div>
                             <div class="tier-price">1.200.000đ</div>
                             <div class="tier-price-usd">$50</div>
                         </div>
-                        <div class="tier-description" data-vi="Chân dung từ vai trở lên" data-en="Portrait from shoulders up">Portrait from shoulders up</div>
+                        <div class="tier-description" data-vi="Chân dung từ vai trở lên" data-en="Portrait from shoulders up">Chân dung từ vai trở lên</div>
                     </div>
-                    <div class="tier-card selected" onclick="selectTier(this, &#39;type&#39;, 2500000, 100)">
+                    <div class="tier-card" onclick="selectTier(this, 'type', 2500000, 100)">
                         <input type="radio" name="type" id="half">
                         <div class="tier-header">
                             <div class="tier-name">half body</div>
                             <div class="tier-price">2.500.000đ</div>
                             <div class="tier-price-usd">$100</div>
                         </div>
-                        <div class="tier-description" data-vi="Nửa người từ eo trở lên" data-en="Half body from waist up">Half body from waist up</div>
+                        <div class="tier-description" data-vi="Nửa người từ eo trở lên" data-en="Half body from waist up">Nửa người từ eo trở lên</div>
                     </div>
-                    <div class="tier-card" onclick="selectTier(this, &#39;type&#39;, 4000000, 150)">
+                    <div class="tier-card" onclick="selectTier(this, 'type', 4000000, 150)">
                         <input type="radio" name="type" id="full">
                         <div class="tier-header">
                             <div class="tier-name">full body</div>
                             <div class="tier-price">4.000.000đ</div>
                             <div class="tier-price-usd">$150</div>
                         </div>
-                        <div class="tier-description" data-vi="Toàn thân nhân vật" data-en="Full body character">Full body character</div>
+                        <div class="tier-description" data-vi="Toàn thân nhân vật" data-en="Full body character">Toàn thân nhân vật</div>
                     </div>
-                    <div class="tier-card" onclick="selectTier(this, &#39;type&#39;, 5000000, 200)">
+                    <div class="tier-card" onclick="selectTier(this, 'type', 5000000, 200)">
                         <input type="radio" name="type" id="illustration">
                         <div class="tier-header">
                             <div class="tier-name">full illustration</div>
                             <div class="tier-price">5.000.000đ</div>
                             <div class="tier-price-usd">$200</div>
                         </div>
-                        <div class="tier-description" data-vi="Tranh hoàn chỉnh với scene &amp; storytelling" data-en="Complete illustration with scene &amp; storytelling">Complete illustration with scene &amp; storytelling</div>
+                        <div class="tier-description" data-vi="Tranh hoàn chỉnh với scene & storytelling" data-en="Complete illustration with scene & storytelling">Tranh hoàn chỉnh với scene & storytelling</div>
                     </div>
                 </div>
             </div>
 
             <!-- Character Design -->
             <div class="section">
-                <h2 class="section-title" data-vi="✨ thiết kế nhân vật" data-en="✨ character design">✨ character design</h2>
+                <h2 class="section-title" data-vi="✨ thiết kế nhân vật" data-en="✨ character design">✨ thiết kế nhân vật</h2>
                 <div class="tier-grid">
-                    <div class="tier-card selected" onclick="selectTier(this, &#39;design&#39;, 0, 0)">
-                        <input type="radio" name="design" id="simple" checked="">
+                    <div class="tier-card selected" onclick="selectTier(this, 'design', 0, 0)">
+                        <input type="radio" name="design" id="simple" checked>
                         <div class="tier-header">
-                            <div class="tier-name" data-vi="đơn giản" data-en="simple">simple</div>
-                            <div class="tier-price" data-vi="miễn phí" data-en="free">free</div>
+                            <div class="tier-name" data-vi="đơn giản" data-en="simple">đơn giản</div>
+                            <div class="tier-price" data-vi="miễn phí" data-en="free">miễn phí</div>
                         </div>
-                        <div class="tier-description" data-vi="Trang phục thông thường ít chi tiết" data-en="Simple outfit with minimal details">Simple outfit with minimal details</div>
+                        <div class="tier-description" data-vi="Trang phục thông thường ít chi tiết" data-en="Simple outfit with minimal details">Trang phục thông thường ít chi tiết</div>
                     </div>
-                    <div class="tier-card" onclick="selectTier(this, &#39;design&#39;, 1000000, 40)">
+                    <div class="tier-card" onclick="selectTier(this, 'design', 1000000, 40)">
                         <input type="radio" name="design" id="complex">
                         <div class="tier-header">
-                            <div class="tier-name" data-vi="phức tạp" data-en="complex">complex</div>
+                            <div class="tier-name" data-vi="phức tạp" data-en="complex">phức tạp</div>
                             <div class="tier-price">+1.000.000đ</div>
                             <div class="tier-price-usd">$40</div>
                         </div>
-                        <div class="tier-description" data-vi="Giáp chi tiết, váy nhiều lớp, pattern phức tạp" data-en="Detailed armor, layered dresses, complex patterns">Detailed armor, layered dresses, complex patterns</div>
+                        <div class="tier-description" data-vi="Giáp chi tiết, váy nhiều lớp, pattern phức tạp" data-en="Detailed armor, layered dresses, complex patterns">Giáp chi tiết, váy nhiều lớp, pattern phức tạp</div>
                     </div>
-                    <div class="tier-card" onclick="selectTier(this, &#39;design&#39;, 5000000, 200)">
+                    <div class="tier-card" onclick="selectTier(this, 'design', 5000000, 200)">
                         <input type="radio" name="design" id="custom">
                         <div class="tier-header">
                             <div class="tier-name">custom design</div>
                             <div class="tier-price">+5.000.000đ</div>
                             <div class="tier-price-usd">$200</div>
                         </div>
-                        <div class="tier-description" data-vi="Thiết kế từ đầu không có reference" data-en="Design from scratch without references">Design from scratch without references</div>
+                        <div class="tier-description" data-vi="Thiết kế từ đầu không có reference" data-en="Design from scratch without references">Thiết kế từ đầu không có reference</div>
                     </div>
                 </div>
             </div>
@@ -712,84 +813,84 @@
             <div class="section">
                 <h2 class="section-title" data-vi="🎨 background" data-en="🎨 background">🎨 background</h2>
                 <div class="tier-grid">
-                    <div class="tier-card selected" onclick="selectTier(this, &#39;bg&#39;, 0, 0)">
-                        <input type="radio" name="bg" id="bg1" checked="">
+                    <div class="tier-card selected" onclick="selectTier(this, 'bg', 0, 0)">
+                        <input type="radio" name="bg" id="bg1" checked>
                         <div class="tier-header">
-                            <div class="tier-name" data-vi="đơn giản" data-en="simple">simple</div>
-                            <div class="tier-price" data-vi="miễn phí" data-en="free">free</div>
+                            <div class="tier-name" data-vi="đơn giản" data-en="simple">đơn giản</div>
+                            <div class="tier-price" data-vi="miễn phí" data-en="free">miễn phí</div>
                         </div>
-                        <div class="tier-description" data-vi="Gradient, blur, bầu trời, silhouette" data-en="Gradient, blur, sky, silhouette">Gradient, blur, sky, silhouette</div>
+                        <div class="tier-description" data-vi="Gradient, blur, bầu trời, silhouette" data-en="Gradient, blur, sky, silhouette">Gradient, blur, bầu trời, silhouette</div>
                     </div>
-                    <div class="tier-card" onclick="selectTier(this, &#39;bg&#39;, 1200000, 50)">
+                    <div class="tier-card" onclick="selectTier(this, 'bg', 1200000, 50)">
                         <input type="radio" name="bg" id="bg2">
                         <div class="tier-header">
-                            <div class="tier-name" data-vi="chi tiết vừa" data-en="medium detail">medium detail</div>
+                            <div class="tier-name" data-vi="chi tiết vừa" data-en="medium detail">chi tiết vừa</div>
                             <div class="tier-price">+1.200.000đ</div>
                             <div class="tier-price-usd">$50</div>
                         </div>
-                        <div class="tier-description" data-vi="Góc phòng, tầng thượng, workspace" data-en="Room corner, rooftop, workspace">Room corner, rooftop, workspace</div>
+                        <div class="tier-description" data-vi="Góc phòng, tầng thượng, workspace" data-en="Room corner, rooftop, workspace">Góc phòng, tầng thượng, workspace</div>
                     </div>
-                    <div class="tier-card" onclick="selectTier(this, &#39;bg&#39;, 4000000, 150)">
+                    <div class="tier-card" onclick="selectTier(this, 'bg', 4000000, 150)">
                         <input type="radio" name="bg" id="bg3">
                         <div class="tier-header">
-                            <div class="tier-name" data-vi="phức tạp" data-en="complex">complex</div>
+                            <div class="tier-name" data-vi="phức tạp" data-en="complex">phức tạp</div>
                             <div class="tier-price">+4.000.000đ</div>
                             <div class="tier-price-usd">$150</div>
                         </div>
-                        <div class="tier-description" data-vi="Lâu đài, thành phố đông đúc, fisheye, lighting phức tạp" data-en="Castle, crowded city, fisheye, complex lighting">Castle, crowded city, fisheye, complex lighting</div>
+                        <div class="tier-description" data-vi="Lâu đài, thành phố đông đúc, fisheye, lighting phức tạp" data-en="Castle, crowded city, fisheye, complex lighting">Lâu đài, thành phố đông đúc, fisheye, lighting phức tạp</div>
                     </div>
                 </div>
             </div>
 
             <!-- Pets -->
             <div class="section">
-                <h2 class="section-title" data-vi="🐾 pet/sinh vật đồng hành" data-en="🐾 pet/companion creature">🐾 pet/companion creature</h2>
+                <h2 class="section-title" data-vi="🐾 pet/sinh vật đồng hành" data-en="🐾 pet/companion creature">🐾 pet/sinh vật đồng hành</h2>
                 <div class="tier-grid">
-                    <div class="tier-card selected" onclick="selectTier(this, &#39;pet&#39;, 0, 0)">
-                        <input type="radio" name="pet" id="nopet" checked="">
+                    <div class="tier-card selected" onclick="selectTier(this, 'pet', 0, 0)">
+                        <input type="radio" name="pet" id="nopet" checked>
                         <div class="tier-header">
-                            <div class="tier-name" data-vi="không có" data-en="none">none</div>
-                            <div class="tier-price" data-vi="miễn phí" data-en="free">free</div>
+                            <div class="tier-name" data-vi="không có" data-en="none">không có</div>
+                            <div class="tier-price" data-vi="miễn phí" data-en="free">miễn phí</div>
                         </div>
                     </div>
-                    <div class="tier-card" onclick="selectTier(this, &#39;pet&#39;, 300000, 12)">
+                    <div class="tier-card" onclick="selectTier(this, 'pet', 300000, 12)">
                         <input type="radio" name="pet" id="simplepet">
                         <div class="tier-header">
-                            <div class="tier-name" data-vi="pet thông thường" data-en="normal pet">normal pet</div>
+                            <div class="tier-name" data-vi="pet thông thường" data-en="normal pet">pet thông thường</div>
                             <div class="tier-price">+300.000đ</div>
                             <div class="tier-price-usd">$12</div>
                         </div>
-                        <div class="tier-description" data-vi="Chó, mèo, chim" data-en="Dog, cat, bird">Dog, cat, bird</div>
+                        <div class="tier-description" data-vi="Chó, mèo, chim" data-en="Dog, cat, bird">Chó, mèo, chim</div>
                     </div>
-                    <div class="tier-card" onclick="selectTier(this, &#39;pet&#39;, 3000000, 120)">
+                    <div class="tier-card" onclick="selectTier(this, 'pet', 3000000, 120)">
                         <input type="radio" name="pet" id="complexpet">
                         <div class="tier-header">
-                            <div class="tier-name" data-vi="sinh vật phức tạp" data-en="complex creature">complex creature</div>
+                            <div class="tier-name" data-vi="sinh vật phức tạp" data-en="complex creature">sinh vật phức tạp</div>
                             <div class="tier-price">+3.000.000đ</div>
                             <div class="tier-price-usd">$120</div>
                         </div>
-                        <div class="tier-description" data-vi="Rồng, quái vật, summon" data-en="Dragon, monster, summon">Dragon, monster, summon</div>
+                        <div class="tier-description" data-vi="Rồng, quái vật, summon" data-en="Dragon, monster, summon">Rồng, quái vật, summon</div>
                     </div>
                 </div>
             </div>
 
             <!-- Additional Characters -->
             <div class="section">
-                <h2 class="section-title" data-vi="👥 thêm nhân vật" data-en="👥 additional characters">👥 additional characters</h2>
+                <h2 class="section-title" data-vi="👥 thêm nhân vật" data-en="👥 additional characters">👥 thêm nhân vật</h2>
                 <div class="addon-grid">
-                    <div class="addon-card" onclick="toggleAddon(this, &#39;char1&#39;, 0.9)">
+                    <div class="addon-card" onclick="toggleAddon(this, 'char1', 0.9)">
                         <input type="checkbox" id="char1">
-                        <div class="addon-name" data-vi="+1 nhân vật" data-en="+1 character">+1 character</div>
+                        <div class="addon-name" data-vi="+1 nhân vật" data-en="+1 character">+1 nhân vật</div>
                         <div class="addon-price">+90% base price</div>
                     </div>
-                    <div class="addon-card" onclick="toggleAddon(this, &#39;char2&#39;, 1.8)">
+                    <div class="addon-card" onclick="toggleAddon(this, 'char2', 1.8)">
                         <input type="checkbox" id="char2">
-                        <div class="addon-name" data-vi="+2 nhân vật" data-en="+2 characters">+2 characters</div>
+                        <div class="addon-name" data-vi="+2 nhân vật" data-en="+2 characters">+2 nhân vật</div>
                         <div class="addon-price">+180% base price</div>
                     </div>
-                    <div class="addon-card" onclick="toggleAddon(this, &#39;char3&#39;, 2.6)">
+                    <div class="addon-card" onclick="toggleAddon(this, 'char3', 2.6)">
                         <input type="checkbox" id="char3">
-                        <div class="addon-name" data-vi="+3 nhân vật" data-en="+3 characters">+3 characters</div>
+                        <div class="addon-name" data-vi="+3 nhân vật" data-en="+3 characters">+3 nhân vật</div>
                         <div class="addon-price">+260% base price</div>
                     </div>
                 </div>
@@ -797,68 +898,68 @@
 
             <!-- File & Deadline -->
             <div class="section">
-                <h2 class="section-title" data-vi="📂 add-ons khác" data-en="📂 other add-ons">📂 other add-ons</h2>
+                <h2 class="section-title" data-vi="📂 add-ons khác" data-en="📂 other add-ons">📂 add-ons khác</h2>
                 <div class="addon-grid">
-                    <div class="addon-card" onclick="toggleAddon(this, &#39;psd&#39;, 0, 1500000, 60)">
+                    <div class="addon-card" onclick="toggleAddon(this, 'psd', 0, 1500000, 60)">
                         <input type="checkbox" id="psd">
-                        <div class="addon-name" data-vi="file psd gốc" data-en="original psd file">original psd file</div>
+                        <div class="addon-name" data-vi="file psd gốc" data-en="original psd file">file psd gốc</div>
                         <div class="addon-price">+1.500.000đ | $60</div>
-                        <div class="addon-description" data-vi="Full layers để chỉnh sửa sau" data-en="Full layers for later editing">Full layers for later editing</div>
+                        <div class="addon-description" data-vi="Full layers để chỉnh sửa sau" data-en="Full layers for later editing">Full layers để chỉnh sửa sau</div>
                     </div>
-                    <div class="addon-card selected" onclick="toggleAddon(this, &#39;rush&#39;, 0.3)">
+                    <div class="addon-card" onclick="toggleAddon(this, 'rush', 0.3)">
                         <input type="checkbox" id="rush">
-                        <div class="addon-name" data-vi="deadline gấp" data-en="rush deadline">rush deadline</div>
+                        <div class="addon-name" data-vi="deadline gấp" data-en="rush deadline">deadline gấp</div>
                         <div class="addon-price">+30%</div>
-                        <div class="addon-description" data-vi="Hoàn thành trong vòng 2 tuần" data-en="Complete within 2 weeks">Complete within 2 weeks</div>
+                        <div class="addon-description" data-vi="Hoàn thành trong vòng 2 tuần" data-en="Complete within 2 weeks">Hoàn thành trong vòng 2 tuần</div>
                     </div>
                 </div>
             </div>
 
             <!-- Usage Rights -->
             <div class="section">
-                <h2 class="section-title" data-vi="🎯 quyền sử dụng" data-en="🎯 usage rights">🎯 usage rights</h2>
+                <h2 class="section-title" data-vi="🎯 quyền sử dụng" data-en="🎯 usage rights">🎯 quyền sử dụng</h2>
                 <div class="tier-grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">
                     <!-- Personal Use -->
-                    <div class="tier-card selected" onclick="selectTier(this, &#39;usage&#39;, 0, 0)">
-                        <input type="radio" name="usage" id="personal" checked="">
+                    <div class="tier-card selected" onclick="selectTier(this, 'usage', 0, 0)">
+                        <input type="radio" name="usage" id="personal" checked>
                         <div class="tier-header">
-                            <div class="tier-name" data-vi="✓ cá nhân" data-en="✓ personal">✓ personal</div>
-                            <div class="tier-price" data-vi="miễn phí" data-en="free">free</div>
+                            <div class="tier-name" data-vi="✓ cá nhân" data-en="✓ personal">✓ cá nhân</div>
+                            <div class="tier-price" data-vi="miễn phí" data-en="free">miễn phí</div>
                         </div>
                         <div class="tier-description" style="margin-top: 15px; margin-bottom: 10px; text-align: center;">
-                            <strong data-vi="Dùng cho:" data-en="For:">For:</strong> 
-                            <span data-vi="Avatar, wallpaper, header, in trang trí cá nhân, portfolio" data-en="Avatar, wallpaper, header, personal prints, portfolio">Avatar, wallpaper, header, personal prints, portfolio</span>
+                            <strong data-vi="Dùng cho:" data-en="For:">Dùng cho:</strong> 
+                            <span data-vi="Avatar, wallpaper, header, in trang trí cá nhân, portfolio" data-en="Avatar, wallpaper, header, personal prints, portfolio">Avatar, wallpaper, header, in trang trí cá nhân, portfolio</span>
                         </div>
                         <ul class="tier-features">
-                            <li data-vi="Có credit (miễn phí)" data-en="With credit (free)">With credit (free)</li>
-                            <li data-vi="Chỉ dùng phi thương mại" data-en="Non-commercial use only">Non-commercial use only</li>
+                            <li data-vi="Có credit (miễn phí)" data-en="With credit (free)">Có credit (miễn phí)</li>
+                            <li data-vi="Chỉ dùng phi thương mại" data-en="Non-commercial use only">Chỉ dùng phi thương mại</li>
                         </ul>
                     </div>
 
                     <!-- Content Creation -->
-                    <div class="tier-card" onclick="selectTier(this, &#39;usage&#39;, 0.75, 0)">
+                    <div class="tier-card" onclick="selectTier(this, 'usage', 0.75, 0)">
                         <input type="radio" name="usage" id="content">
                         <div class="tier-header">
-                            <div class="tier-name" data-vi="✓ nội dung kiếm tiền" data-en="✓ monetized content">✓ monetized content</div>
+                            <div class="tier-name" data-vi="✓ nội dung kiếm tiền" data-en="✓ monetized content">✓ nội dung kiếm tiền</div>
                             <div class="tier-price">+75%</div>
                         </div>
                         <div class="tier-description" style="margin-top: 15px; margin-bottom: 10px; text-align: center;">
-                            <strong data-vi="Dùng cho:" data-en="For:">For:</strong> 
-                            <span data-vi="YouTube, Twitch overlays, Vtuber assets, content có ads/donation/sponsor" data-en="YouTube, Twitch overlays, Vtuber assets, content with ads/donations/sponsors">YouTube, Twitch overlays, Vtuber assets, content with ads/donations/sponsors</span>
+                            <strong data-vi="Dùng cho:" data-en="For:">Dùng cho:</strong> 
+                            <span data-vi="YouTube, Twitch overlays, Vtuber assets, content có ads/donation/sponsor" data-en="YouTube, Twitch overlays, Vtuber assets, content with ads/donations/sponsors">YouTube, Twitch overlays, Vtuber assets, content có ads/donation/sponsor</span>
                         </div>
-                        
+                        </ul>
                     </div>
 
                     <!-- Commercial -->
-                    <div class="tier-card" onclick="alert(currentLang === &#39;vi&#39; ? &#39;Vui lòng liên hệ riêng để thảo luận về licensing thương mại&#39; : &#39;Please contact separately to discuss commercial licensing&#39;)">
+                    <div class="tier-card" onclick="alert(currentLang === 'vi' ? 'Vui lòng liên hệ riêng để thảo luận về licensing thương mại' : 'Please contact separately to discuss commercial licensing')">
                         <div class="tier-header">
-                            <div class="tier-name" data-vi="✓ bán hàng thương mại" data-en="✓ commercial sales">✓ commercial sales</div>
-                            <div class="tier-price" style="font-size: 1.1em;" data-vi="liên hệ riêng" data-en="contact separately">contact separately</div>
-                            <div class="tier-price-usd" data-vi="(Giá tính theo flat fee hoặc % royalty)" data-en="(Priced as flat fee or % royalty)">(Priced as flat fee or % royalty)</div>
+                            <div class="tier-name" data-vi="✓ bán hàng thương mại" data-en="✓ commercial sales">✓ bán hàng thương mại</div>
+                            <div class="tier-price" style="font-size: 1.1em;" data-vi="liên hệ riêng" data-en="contact separately">liên hệ riêng</div>
+                            <div class="tier-price-usd" data-vi="(Giá tính theo flat fee hoặc % royalty)" data-en="(Priced as flat fee or % royalty)">(Giá tính theo flat fee hoặc % royalty)</div>
                         </div>
                         <div class="tier-description" style="margin-top: 15px; margin-bottom: 10px; text-align: center;">
-                            <strong data-vi="Dùng cho:" data-en="For:">For:</strong> 
-                            <span data-vi="In merch bán, art print thương mại, NFT, licensing cho game/sách/brand" data-en="Merch sales, commercial art prints, NFTs, game/book/brand licensing">Merch sales, commercial art prints, NFTs, game/book/brand licensing</span>
+                            <strong data-vi="Dùng cho:" data-en="For:">Dùng cho:</strong> 
+                            <span data-vi="In merch bán, art print thương mại, NFT, licensing cho game/sách/brand" data-en="Merch sales, commercial art prints, NFTs, game/book/brand licensing">In merch bán, art print thương mại, NFT, licensing cho game/sách/brand</span>
                         </div>
                     </div>
                 </div>
@@ -866,49 +967,71 @@
                 <!-- Ghost Credit Addon (appears below usage selection) -->
                 <div style="margin-top: 24px;">
                     <div class="addon-grid" style="max-width: 600px; margin: 0 auto;">
-                        <div class="addon-card selected" onclick="toggleGhostCredit(this)">
+                        <div class="addon-card" onclick="toggleGhostCredit(this)">
                             <input type="checkbox" id="ghostcredit">
                             <div class="addon-name" data-vi="🔒 ghost credit" data-en="🔒 ghost credit">🔒 ghost credit</div>
-                            <div class="addon-price" id="ghostCreditPrice" data-vi="+30% (cá nhân) / +50% (nội dung)" data-en="+30% (personal) / +50% (content)">+30% (personal) / +50% (content)</div>
-                            <div class="addon-description" data-vi="Đăng không cần credit công khai" data-en="Post without public credit">Post without public credit</div>
+                            <div class="addon-price" id="ghostCreditPrice" data-vi="+30% (cá nhân) / +50% (nội dung)" data-en="+30% (personal) / +50% (content)">+30% (cá nhân) / +50% (nội dung)</div>
+                            <div class="addon-description" data-vi="Đăng không cần credit công khai" data-en="Post without public credit">Đăng không cần credit công khai</div>
                         </div>
                     </div>
                 </div>
             </div>
 
             <div class="collapsible" onclick="toggleCollapsible(this)">
-                <strong data-vi="ℹ️ lưu ý về quyền sở hữu &amp; credit" data-en="ℹ️ notes on ownership &amp; credit">ℹ️ notes on ownership &amp; credit</strong>
-                <div class="collapsible-content active">
-                    <p style="margin-top: 10px;" data-vi="&lt;strong&gt;Gem giữ toàn bộ copyright tác phẩm.&lt;/strong&gt;" data-en="&lt;strong&gt;Gem retains all copyright of the artwork.&lt;/strong&gt;"><strong>Gem retains all copyright of the artwork.</strong></p>
-                    <p style="margin-top: 8px;" data-vi="&quot;Ghost credit&quot; không có nghĩa bạn sở hữu bản quyền. Khi được hỏi về artist, bạn có thể trả lời đúng hoặc không tiết lộ - nhưng KHÔNG ĐƯỢC claim sai tác giả." data-en="&quot;Ghost credit&quot; does not mean you own the copyright. When asked about the artist, you can answer truthfully or not disclose - but you MUST NOT claim false authorship.">"Ghost credit" does not mean you own the copyright. When asked about the artist, you can answer truthfully or not disclose - but you MUST NOT claim false authorship.</p>
-                    <p style="margin-top: 8px;" data-vi="&lt;strong&gt;Vi phạm:&lt;/strong&gt; Claim sai tác giả = phạt 10× giá trị đơn hàng" data-en="&lt;strong&gt;Violation:&lt;/strong&gt; False authorship claim = 10× order value penalty"><strong>Violation:</strong> False authorship claim = 10× order value penalty</p>
+                <strong data-vi="ℹ️ lưu ý về quyền sở hữu & credit" data-en="ℹ️ notes on ownership & credit">ℹ️ lưu ý về quyền sở hữu & credit</strong>
+                <div class="collapsible-content">
+                    <p style="margin-top: 10px;" data-vi="<strong>Gem giữ toàn bộ copyright tác phẩm.</strong>" data-en="<strong>Gem retains all copyright of the artwork.</strong>"><strong>Gem giữ toàn bộ copyright tác phẩm.</strong></p>
+                    <p style="margin-top: 8px;" data-vi="&quot;Ghost credit&quot; không có nghĩa bạn sở hữu bản quyền. Khi được hỏi về artist, bạn có thể trả lời đúng hoặc không tiết lộ - nhưng KHÔNG ĐƯỢC claim sai tác giả." data-en="&quot;Ghost credit&quot; does not mean you own the copyright. When asked about the artist, you can answer truthfully or not disclose - but you MUST NOT claim false authorship.">"Ghost credit" không có nghĩa bạn sở hữu bản quyền. Khi được hỏi về artist, bạn có thể trả lời đúng hoặc không tiết lộ - nhưng KHÔNG ĐƯỢC claim sai tác giả.</p>
+                    <p style="margin-top: 8px;" data-vi="<strong>Vi phạm:</strong> Claim sai tác giả = phạt 10× giá trị đơn hàng" data-en="<strong>Violation:</strong> False authorship claim = 10× order value penalty"><strong>Vi phạm:</strong> Claim sai tác giả = phạt 10× giá trị đơn hàng</p>
                 </div>
             </div>
 
-            <p style="text-align: center; margin-top: 40px; color: rgba(128,116,130,0.741); font-size: 0.9em;" data-vi="Giá trên là ước tính. Giá cuối cùng có thể thay đổi tùy độ phức tạp thực tế của dự án." data-en="Prices above are estimates. Final price may vary based on actual project complexity.">Prices above are estimates. Final price may vary based on actual project complexity.</p>
+            <p style="text-align: center; margin-top: 40px; color: rgba(128,116,130,0.741); font-size: 0.9em;" data-vi="Giá trên là ước tính. Giá cuối cùng có thể thay đổi tùy độ phức tạp thực tế của dự án." data-en="Prices above are estimates. Final price may vary based on actual project complexity.">
+                Giá trên là ước tính. Giá cuối cùng có thể thay đổi tùy độ phức tạp thực tế của dự án.
+            </p>
         </div>
 
         <!-- Sticky Bottom Price Bar -->
         <div class="sticky-price-bar">
             <div class="price-bar-content">
                 <div class="price-display">
-                    <div class="price-label" data-vi="tổng giá trị commission" data-en="total commission value">total commission value</div>
-                    <div class="price-amount" id="stickyVND" data-vi="chọn loại commission" data-en="select commission type">4.000.000đ</div>
-                    <div class="price-amount-usd" id="stickyUSD">$160</div>
+                    <div class="price-label" data-vi="tổng giá trị commission" data-en="total commission value">tổng giá trị commission</div>
+                    <div class="price-amount" id="stickyVND" data-vi="chọn loại commission" data-en="select commission type">chọn loại commission</div>
+                    <div class="price-amount-usd" id="stickyUSD"></div>
                 </div>
                 <div style="display: flex; flex-direction: column; gap: 8px; align-items: center;">
                     <div style="display: flex; gap: 12px; flex-wrap: wrap; justify-content: center;">
                         <button class="breakdown-toggle" onclick="toggleBreakdown()">
-                            <span data-vi="chi tiết giá" data-en="price breakdown">price breakdown</span>
+                            <span data-vi="chi tiết giá" data-en="price breakdown">chi tiết giá</span>
                         </button>
-                        <a href="mailto:your-email@example.com" class="sticky-cta">
-                            <span data-vi="đặt commission" data-en="order commission">order commission</span>
-                        </a>
+                        <div class="contact-dropdown" id="contactDropdown">
+                            <button class="contact-dropdown-btn" onclick="toggleContactDropdown()">
+                                <span data-vi="đặt commission" data-en="order commission">đặt commission</span>
+                            </button>
+                            <div class="contact-dropdown-menu">
+                                <a href="https://www.facebook.com/[YOUR_PAGE_HERE]" target="_blank" class="contact-dropdown-item" data-vi="Facebook" data-en="Facebook">
+                                    <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                                    <span class="label">Facebook</span>
+                                </a>
+                                <a href="https://t.me/fr0mthevault" target="_blank" class="contact-dropdown-item" data-vi="Telegram" data-en="Telegram">
+                                    <svg viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+                                    <span class="label">Telegram</span>
+                                </a>
+                                <a href="https://x.com/gemir4cle" target="_blank" class="contact-dropdown-item" data-vi="Twitter/X" data-en="Twitter/X">
+                                    <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                                    <span class="label">Twitter/X</span>
+                                </a>
+                                <a href="/cdn-cgi/l/email-protection#d2a2b3a0a7a2a2a7a0bd92b5bfb3bbbefcb1bdbf" class="contact-dropdown-item" data-vi="Email" data-en="Email">
+                                    <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                                    <span class="label"><span class="__cf_email__" data-cfemail="e999889b9c99999c9b86a98e84888085c78a8684">[email&#160;protected]</span></span>
+                                </a>
+                            </div>
+                        </div>
                     </div>
                     <div class="button-instructions">
-                        <span data-vi="1. chụp lại chi tiết giá" data-en="1. screenshot price breakdown">1. screenshot price breakdown</span>
+                        <span data-vi="1. chụp lại chi tiết giá" data-en="1. screenshot price breakdown">1. chụp lại chi tiết giá</span>
                         <span style="color: rgba(128,116,130,0.5);">→</span>
-                        <span data-vi="2. gửi cho contact" data-en="2. send to contact">2. send to contact</span>
+                        <span data-vi="2. gửi cho contact" data-en="2. send to contact">2. gửi cho contact</span>
                     </div>
                 </div>
             </div>
@@ -918,27 +1041,15 @@
         <div class="breakdown-modal" id="breakdownModal" onclick="closeBreakdownOutside(event)">
             <div class="breakdown-content">
                 <div class="breakdown-header">
-                    <h3 data-vi="chi tiết giá" data-en="price breakdown">price breakdown</h3>
+                    <h3 data-vi="chi tiết giá" data-en="price breakdown">chi tiết giá</h3>
                     <button class="close-breakdown" onclick="toggleBreakdown()">×</button>
                 </div>
-                <div id="modalBreakdownItems"><div class="breakdown-item">
-                    <span>Commission type</span>
-                    <span>2.500.000đ</span>
-                </div><div class="breakdown-item">
-                    <span>Phí % (usage, rush, etc.)</span>
-                    <span>+30%</span>
-                </div><div class="breakdown-item">
-                    <span>Ghost credit</span>
-                    <span>+30%</span>
-                </div><div class="breakdown-item">
-                <span><strong>TỔNG CỘNG</strong></span>
-                <span><strong>4.000.000đ</strong></span>
-            </div></div>
+                <div id="modalBreakdownItems"></div>
             </div>
         </div>
     </div>
 
-    <script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
         let currentLang = 'vi'; // Default language
 
         let prices = {
@@ -1173,46 +1284,20 @@
             }
         }
 
-        calculateTotal();
-    </script>
-<!-- Code injected by live-server -->
-<script>
-	// <![CDATA[  <-- For SVG support
-	if ('WebSocket' in window) {
-		(function () {
-			function refreshCSS() {
-				var sheets = [].slice.call(document.getElementsByTagName("link"));
-				var head = document.getElementsByTagName("head")[0];
-				for (var i = 0; i < sheets.length; ++i) {
-					var elem = sheets[i];
-					var parent = elem.parentElement || head;
-					parent.removeChild(elem);
-					var rel = elem.rel;
-					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
-						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
-						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
-					}
-					parent.appendChild(elem);
-				}
-			}
-			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
-			var address = protocol + window.location.host + window.location.pathname + '/ws';
-			var socket = new WebSocket(address);
-			socket.onmessage = function (msg) {
-				if (msg.data == 'reload') window.location.reload();
-				else if (msg.data == 'refreshcss') refreshCSS();
-			};
-			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
-				console.log('Live reload enabled.');
-				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
-			}
-		})();
-	}
-	else {
-		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
-	}
-	// ]]>
-</script>
+        function toggleContactDropdown() {
+            const dropdown = document.getElementById('contactDropdown');
+            dropdown.classList.toggle('active');
+            
+            // Close when clicking outside
+            if (dropdown.classList.contains('active')) {
+                setTimeout(() => {
+                    document.addEventListener('click', closeContactDropdownOutside);
+                }, 10);
+            } else {
+                document.removeEventListener('click', closeContactDropdownOutside);
+            }
+        }
 
-
-</body></html>
+        function closeContactDropdownOutside(event) {
+            const dropdown = document.getElementById('contactDropdown');
+            if (!dropdown.c
