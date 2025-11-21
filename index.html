@@ -1300,4 +1300,13 @@
 
         function closeContactDropdownOutside(event) {
             const dropdown = document.getElementById('contactDropdown');
-            if (!dropdown.c
+            if (!dropdown.contains(event.target)) {
+                dropdown.classList.remove('active');
+                document.removeEventListener('click', closeContactDropdownOutside);
+            }
+        }
+
+        calculateTotal();
+    </script>
+</body>
+</html>
